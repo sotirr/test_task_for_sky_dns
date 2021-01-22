@@ -6,7 +6,7 @@
 <div class="container">
     <div class="mx-auto w-50 p-5">
         <h2>Ведите свой email</h2>
-        <form action="{% url 'simple_app:index' %}" method="get">
+        <form action="{% url 'simple_app:index' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Отправить">

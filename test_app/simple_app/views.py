@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -9,13 +9,20 @@ from .forms import SimpleForm
 
 
 class Index(View):
+    ''' render Index page '''
+
     def get(self, request: HttpRequest) -> HttpResponse:
         form: Form = SimpleForm()
         return render(request, 'simple_app/index.html', context={'form': form})
 
+    def post(self, request: HttpRequest) -> HttpResponse:
+        return redirect('simple_app:index')
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Api(View):
+    ''' implement api functional '''
+
     def get(self, request: HttpRequest) -> HttpResponse:
         return HttpResponse(status=404)
 
