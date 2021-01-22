@@ -13,8 +13,9 @@ class LogAllRequestsMiddleware(MiddlewareMixin):
     def process_response(self, request: HttpRequest, response: HttpResponse) -> HttpResponse:
         ''' logging all request to file'''
         params: dict = self._get_params(request)
+        time: str = timezone.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
         logger_dict: dict = {
-            'time': timezone.now(),
+            'time': time,
             'url': request.path,
             'method': request.method,
             'status': response.status_code,
