@@ -17,8 +17,7 @@
 1. Клонируем репозиторий с гитхаба
 
 ```bash
-$ git clone git@github.com/sotirr/home_bookkeeping.git
-$ cd home_bookkeeping
+$ git clone git@github.com/sotirr/test_task_for_sky_dns.git
 ```
 
 2. Активируем ваше виртуальное окружение
@@ -32,6 +31,7 @@ $ pip install -r requirements.txt
 4. Запускаем django сервер
 
 ```bash
+$ cd test_app
 $ python manage.py runserver
 ```
 
