@@ -123,3 +123,22 @@ STATIC_URL = '/static/'
 
 
 LOG_FILE = 'requests.log'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': f'{BASE_DIR}/requests.log'
+        },
+    },
+    'loggers': {
+        'request_to_file': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

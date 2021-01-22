@@ -3,6 +3,10 @@ from django.http import HttpRequest, HttpResponse
 from django.utils.deprecation import MiddlewareMixin
 from django.conf import settings
 
+import logging
+
+logger = logging.getLogger('request_to_file')
+
 
 class LogAllRequestsMiddleware(MiddlewareMixin):
     ''' Middleware fir logging all requests wtih params '''
@@ -17,9 +21,8 @@ class LogAllRequestsMiddleware(MiddlewareMixin):
             'status': response.status_code,
             'params': params,
         }
-        with open(settings.LOG_FILE, 'a') as file:
-            file.write(f'{loger_dict}\n')
 
+        logger.info(f'{loger_dict}')
         return response
 
     def _get_params(self, request: HttpRequest) -> dict:
