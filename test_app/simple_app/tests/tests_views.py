@@ -3,6 +3,10 @@ from django.urls import reverse
 
 from simple_app.forms import SimpleForm
 
+import logging
+
+logging.disable()
+
 
 class TestIndexView(TestCase):
 
